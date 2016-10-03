@@ -56,16 +56,22 @@ namespace TheWorld.Contollers.Api
                     var usr = await GetCurrentUserAsync();
                     var userId = usr?.Id;
                     var fileName = "pic" + usr?.Id + ".jpg";
-
-                    using (var fileStream = new FileStream(Path.Combine(uploads, fileName), FileMode.Create))
+                    try
                     {
-                        await file.CopyToAsync(fileStream);
+                        using (var fileStream = new FileStream(Path.Combine(uploads, fileName), FileMode.Create))
+                        {
+                            await file.CopyToAsync(fileStream);
+                            Debug.WriteLine("eina");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine("gaidys");
                     }
                 }
-                Debug.WriteLine("gaidys");
+                
             }
-            var user = await GetCurrentUserAsync();
-            return View();
+            return Redirect("/App/Profile");
         }
 
 

@@ -13,11 +13,12 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-md-3 col-lg-3 " align="center">
-                    <img ng-show="pc.isProfilePic" alt="User Pic" src="../img/profilePic/pic{{pc.user.Id}}.jpg" class="img-circle img-responsive">
-                    <img ng-show="!pc.isProfilePic" alt="User Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" class="img-circle img-responsive">
+                    
+                    <img ng-show="pc.isProfilePic" alt="Profile pic" ng-src="../img/profilePic/pic{{pc.user.id}}.jpg" class="img-circle img-responsive">
+                    <img ng-show="!pc.isProfilePic" alt="Alt Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" class="img-circle img-responsive">
 
                 </div>
-
+                
 
                 <div class="col-md-9 col-lg-9">
                     <table class="table table-user-information">

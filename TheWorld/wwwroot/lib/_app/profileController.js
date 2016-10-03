@@ -1,1 +1,0 @@
-!function(){"use strict";function l(l,o,r,i){var n=this;n.user;var e="/api/profile";l.get(e).then(function(l){n.user=l.data}).finally(function(){}),n.addPicture=function(){var l=o.myFile,r=e+"/upload";i.uploadFileToUrl(l,r)}}angular.module("app-profile").controller("profileController",l)}();
