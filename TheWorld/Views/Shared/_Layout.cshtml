@@ -1,0 +1,124 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Destination - @ViewBag.Title</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootswatch/yeti/bootstrap.min.css"/>
+    <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/lib/angularjs-datepicker/src/css/angular-datepicker.css" type="text/css" />
+    <link rel="stylesheet" href="~/css/login.css" type="text/css"/>
+    <link rel="stylesheet" href="~/css/jquery-jvectormap-2.0.3.css" type="text/css" media="screen"/>
+
+
+
+</head>
+<body style="overflow-x:hidden">
+
+    <div id="sidebar">
+@if (User.Identity.IsAuthenticated)
+{
+        <img src="~/img/trippy-profile-pic-portrait-head-on-and-from-side-angle.jpg" alt="headshot" class="headshot" />
+        <span id="username">@User.Identity.Name</span>
+}
+        <ul class="nav">
+            @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+            {
+                <li><a asp-controller="App" asp-action="Admin">Admin Panel //damusti </a></li>
+            }
+            <li class="active"><a asp-controller="App" asp-action="Index">Home</a></li>
+            <li><a asp-controller="App" asp-action="About">About</a></li>
+            <li><a asp-controller="App" asp-action="Contact">Contacts</a></li>
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                <li><a asp-controller="App" asp-action="Trips">Trips</a></li>
+                <li><a asp-controller="Auth" asp-action="Logout">Logout</a></li>
+            }
+            else
+            {
+                <li id="sidebar-login"><a asp-controller="App" asp-action="Trips">Check my trips</a></li>
+            }
+        </ul>
+    </div>
+
+
+    <div id="wrapper">
+        <nav id="nav-layout" class="navbar navbar-inverse">
+           
+
+
+                <ul class="nav navbar-nav navbar-left">
+                    <li>
+                        <button id="sidebarToggle" class="btn btn-primary btn-sm"><i class="fa fa-angle-left"></i>  Hide Sidebar</button>
+                    </li>
+                </ul>
+
+
+                <a asp-controller="App" asp-action="Index" class="navbar-brand">The World</a>
+                <ul class="nav navbar-nav navbar-right container-fluid">
+                    
+@if (User.Identity.IsAuthenticated)
+{
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="profile-ava">
+                                
+                            </span>
+                            <span class="username">@User.Identity.Name</span>
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu extended logout">
+                            
+                            <li class="eborder-top">
+                                <a  asp-controller="App" asp-action="Profile"><i class="fa fa-user" aria-hidden="true"></i> Profile//damusti</a>
+                            </li>
+                            <li class="eborder-top">
+                                <a asp-controller="App" asp-action="Trips"><i class="fa fa-plane" aria-hidden="true"></i> My Trips</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-envelope" aria-hidden="true"></i> Inbox//later</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i> Timeline//later</a>
+                            </li>
+                            
+                            <li>
+                                <a asp-controller="Auth" asp-action="Logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Log Out</a>
+                            </li>
+                            
+                        </ul>
+                    </li>
+}
+                </ul>
+          
+        </nav>
+        
+        <div>
+            @RenderBody()
+            
+        </div>
+
+        <div id="footer" class="container-fluid">
+            <div class="navbar navbar-inverse navbar-fixed-bottom">
+                <h4 class="text-center text-info"> &copy; 2015 Destination 2016.</h4>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <environment names="Development">
+        <script src="~/js/site.js"></script>
+    </environment>
+    <environment names="Production,Staging">
+        <script src="~/lib/_app/site.js"></script>
+    </environment>
+        @RenderSection("scripts", false)
+   
+
+</body>
+</html>

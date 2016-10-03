@@ -1,0 +1,1 @@
+!function(){var a=$("#sidebar,#wrapper");$("#sidebarToggle").on("click",function(){a.toggleClass("hide-sidebar"),a.hasClass("hide-sidebar")?$(this).html("Show Sidebar  <i class='fa fa-angle-right'></i>"):$(this).html("<i class='fa fa-angle-left'></i>  Hide Sidebar")})}();

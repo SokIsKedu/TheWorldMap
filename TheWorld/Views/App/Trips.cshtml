@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@* Check why some local libs not working and requires CDN *@
+@section Scripts {    
+    <script src="~/lib/underscore/underscore.js"></script>
+    <script src="~/lib/angular/angular.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script> 
+    <script src="~/lib/angular-route/angular-route.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmVjBeux5O9qZZm9m0EdszxZbUDPPjzXM" async defer></script>
+    <script src="~/lib/gmaps/gmaps.min.js"></script>
+    <script src="~/lib/travelmap/travelmap.js"></script>
+    <script src="~/js/simpleControls.js"></script>
+    <script src="~/js/app-trips.js"></script>
+    <script src="~/js/tripsController.js"></script>
+    <script src="~/js/tripEditorController.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
+    <script src="~/lib/angularjs-datepicker/src/js/angular-datepicker.js"></script>
+    <script src="~/lib/angular-animate/angular-animate.js"></script>
+    <script src="~/js/site.js"></script>
+    
+}
+
+
+<div class="row" ng-app="app-trips" ng-cloak>
+    <div ng-view></div>
+
+
+
+
+</div>
