@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using MailKit.Net.Smtp;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
+using MimeKit;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -98,6 +100,8 @@ namespace TheWorld.Contollers
                 user.DateJoined = DateTime.Now;
                 var result = await _userManager.CreateAsync(user, rvm.Password);
                 Debug.WriteLine(result);
+                
+
             }
             catch (Exception ex)
             {

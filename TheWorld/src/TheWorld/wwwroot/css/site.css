@@ -28,6 +28,9 @@ input[type=text], input[type=password], textarea {
     bottom: 0;
     width: 100%;
 }*/
+#TripInput {
+margin-left: 10px;
+}
 .fa-select {
 font-family:sans-serif, "FontAwesome";
 }
@@ -115,8 +118,8 @@ font-family:sans-serif, "FontAwesome";
 }
 
 .map-intro {
-    
-    height:879px;
+    position: relative;
+    height: 882px;
 }
 #nav-layout {
 margin-bottom:0px

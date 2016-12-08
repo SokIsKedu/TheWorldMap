@@ -66,7 +66,7 @@ namespace TheWorld.Contollers.Api
                     }
                     catch (Exception ex)
                     {
-                        Debug.WriteLine("gaidys");
+                        Debug.WriteLine("err");
                     }
                 }
                 

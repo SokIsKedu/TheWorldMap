@@ -53,6 +53,7 @@ namespace TheWorld
                 config.Cookies.ApplicationCookie.LoginPath = "/Auth/Login";
                 config.Cookies.ApplicationCookie.Events = new CookieAuthenticationEvents()
                 {
+                    
                     OnRedirectToLogin = async ctx =>
                     {
                         if (ctx.Request.Path.StartsWithSegments("/api") && ctx.Response.StatusCode == 200)
@@ -128,18 +129,7 @@ namespace TheWorld
                     );
             });
 
-            //if (env.IsEnvironment("Development"))
-            //{
-            //    Console.Write("Debugging");
-            //    app.UseDeveloperExceptionPage();
-            //    factory.AddDebug(LogLevel.Information);
-            //}
-            //else
-            //{
-            //    Console.Write("Production");
-            //    factory.AddDebug(LogLevel.Error);
-            //}
-            // adding console
+           
             loggerFactory.AddConsole();
             // calling the database seeder method
             seeder.EnsureSeedData().Wait();

@@ -94,19 +94,6 @@
 
 
 
-
-
-
-
-
-   
-
-
-
-
-
-    
-
     function _showMap(stops) {
        
         if (stops && stops.length > 0) {
@@ -131,8 +118,7 @@
                 selector: "#map",
                 currentStop: currStop,
                 initialZoom: 3
-            });
-            
+            });  
         } 
     }
 })();

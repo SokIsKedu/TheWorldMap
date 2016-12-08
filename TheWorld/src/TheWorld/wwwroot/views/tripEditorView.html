@@ -1,6 +1,5 @@
-﻿    <div><a href="#/" class="btn btn-sm btn-default"><i class="fa fa-angle-left"></i>Back</a></div>
-    <div class="col-md-3">
-        
+﻿    <div class="row" id="TripInput" style="margin-left:15px"><div class="col-md-3" style="margin-left:-15px"><a href="#/" class="btn btn-sm btn-default"><i class="fa fa-angle-left"></i>Back</a></div></div>
+    <div class="col-md-3" id="TripInput">
         <h2>{{vm.tripName}}</h2>
         <wait-cursor display-when="vm.isBusy"></wait-cursor>
         <div class="alert alert-danger" ng-show="vm.errorMessage">{{vm.errorMessage}}</div>
@@ -14,10 +13,6 @@
                     <input class="form-control" id="arrival" name="arrival" ng-model="vm.newStop.arrival" required
                            ng-pattern="/^(\d{4})\-(\d{2})\-(\d{2})$/" placeholder="Select date..." />
                 </datepicker>
-
-
-
-               
 
 
                 <span class="text-danger" ng-show="newStopForm.arrival.$error.required">Required</span>
@@ -65,7 +60,7 @@
 
     </div>
 
-    <div class="col-md-9">
+    <div class="col-md-8">
         <h2>The Map</h2>
         <div id="map"ng-if="vm.show"></div>
     </div>

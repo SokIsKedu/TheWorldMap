@@ -44,15 +44,12 @@
                     Password: $scope.UserInfo.Password,
                     Email: $scope.UserInfo.Email
                 }
-                alert("Register");
                 $http.post("/register", rvm)
                 .then(function (response) {
-                    alert("then");
-                    console.log("then");
+                    
                 })
                 .finally(function () {
-                    alert("finally");
-                    console.log("finally");
+                
                 });
             }
         };
