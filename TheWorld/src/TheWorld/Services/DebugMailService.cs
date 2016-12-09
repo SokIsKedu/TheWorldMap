@@ -1,43 +1,68 @@
-﻿using MailKit.Net.Smtp;
-using MimeKit;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net;
+using MimeKit;
+
 
 namespace TheWorld.Services
 {
     public class DebugMailService : IMailService
     {
-       
-
-        public void SendMail(string to, string from, string subject, string body)
-        {
-            Debug.WriteLine($"Sending Mail: To:{ to},From:{from},Subject:{subject}");
-
-
-            var message = new MimeMessage();
-            message.From.Add(new MailboxAddress("The World", "erlandas.trumpickas@gmail.com"));
-            message.To.Add(new MailboxAddress("",to));
-            message.Subject = subject;
-            message.Body = new TextPart("plain")
+        
+            public void SendMail(string to, string from, string subject, string body)
             {
-                Text = body
-            };
-            using (var client = new SmtpClient())
+            Chilkat.MailMan mailman = new Chilkat.MailMan();
+
+            //  Any string argument automatically begins the 30-day trial.
+            bool success = mailman.UnlockComponent("30-day trial");
+            if (success != true)
             {
-                client.Connect("smtp.gmail.com", 465, true);
-                client.AuthenticationMechanisms.Remove("XOAUTH2");
-                // Note: since we don't have an OAuth2 token, disable 	// the XOAUTH2 authentication mechanism.     client.Authenticate("anuraj.p@example.com", "password");
-                client.Send(message);
-                client.Disconnect(true);
+                Console.WriteLine(mailman.LastErrorText);
+                return;
             }
+
+            //  Set the SMTP server.
+            mailman.SmtpHost = "smtp.gmail.com";
+
+            mailman.SmtpUsername = "et88568";
+            mailman.SmtpPassword = "templarORDIN3//";
+
+            mailman.SmtpSsl = true;
+            mailman.SmtpPort = 465;
+
+            //  Create a new email object
+            Chilkat.Email email = new Chilkat.Email();
+
+            email.Subject = subject;
+            email.Body = body;
+            email.From = from;
+            success = email.AddTo("Admin", to);
+
+            success = mailman.SendEmail(email);
+            Console.WriteLine(success);
+            if (success != true)
+            {
+                Console.WriteLine(mailman.LastErrorText);
+                return;
+            }
+
+            success = mailman.CloseSmtpConnection();
+            if (success != true)
+            {
+                Console.WriteLine("Connection to SMTP server not closed cleanly.");
+            }
+
+            Console.WriteLine("Mail Sent!");
+
+
+
+
+
+
         }
     }
-}
-
-
-// 129345506627-rsnekr80mp022tn4ueqopbehljpson2b.apps.googleusercontent.com
-// 2Ego5bg_9JVHjWCmWiJwS-4Z
+    }

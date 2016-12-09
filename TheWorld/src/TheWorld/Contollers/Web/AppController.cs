@@ -67,7 +67,7 @@ namespace TheWorld.Contollers.Web
             
             if (ModelState.IsValid)
             {                
-                _mailService.SendMail(_config["MailSettings:ToAddress"], model.Email, " gaidys", model.Message);
+                _mailService.SendMail("et88568@gmail.com", model.Email, " Subject", model.Message);
                 ModelState.Clear();
                 ViewBag.UserMessage = "Message Sent";
             }

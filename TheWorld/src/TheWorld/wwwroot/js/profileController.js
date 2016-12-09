@@ -6,6 +6,7 @@
 
     function profileController($http,$scope,$timeout)
     {
+        //pc.isPictureSelected = false;
         var pc = this;
         pc.user;
         var apiUrl = "/api/profile";

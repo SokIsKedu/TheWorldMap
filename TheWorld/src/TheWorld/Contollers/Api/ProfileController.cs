@@ -51,8 +51,11 @@ namespace TheWorld.Contollers.Api
             var uploads = Path.Combine(_environment.WebRootPath, "img\\profilePic");
             foreach (FormFile file in files)
             {
-                if (file.Length > 0)
+                Console.WriteLine(file.ContentType);
+                if (file.Length > 0 && file.ContentType.StartsWith("image") && file.Length < 16384)
                 {
+                    
+                    
                     var usr = await GetCurrentUserAsync();
                     var userId = usr?.Id;
                     var fileName = "pic" + usr?.Id + ".jpg";
@@ -66,7 +69,7 @@ namespace TheWorld.Contollers.Api
                     }
                     catch (Exception ex)
                     {
-                        Debug.WriteLine("err");
+                        Debug.WriteLine(ex.Data);
                     }
                 }
                 
