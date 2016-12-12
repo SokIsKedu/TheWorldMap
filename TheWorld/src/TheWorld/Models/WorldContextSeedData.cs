@@ -13,12 +13,14 @@ namespace TheWorld.Models
     public class WorldContextSeedData
     {
         private UserManager<WorldUser> _userManager;
+        private RoleManager<WorldRole> _roleManager;
 
         public WorldContext _context { get; set; } 
-        public WorldContextSeedData(WorldContext context, UserManager<WorldUser> userManager )
+        public WorldContextSeedData(WorldContext context, UserManager<WorldUser> userManager, RoleManager<WorldRole> roleManager)
         {
             _context = context;
             _userManager = userManager;
+            _roleManager = roleManager;
         }
         public async Task EnsureSeedData()
         {
@@ -36,9 +38,31 @@ namespace TheWorld.Models
                     Email = "et88568@gmail.com"
                 };
                 await _userManager.CreateAsync(user, "P@ssw0rd!");
-                Debug.WriteLine("ideta1");
                 await _userManager.CreateAsync(user1, "P@ssw0rd!");
-                Debug.WriteLine("ideta2");
+
+
+                if (!_roleManager.RoleExistsAsync("Administrator").Result)
+                {
+                    WorldRole role = new WorldRole();
+                    role.Name = "Administrator";
+                    role.Description = "Administrate web page";
+                    await _roleManager.CreateAsync(role);
+                }
+                if (!_roleManager.RoleExistsAsync("SimpleUser").Result)
+                {
+                    WorldRole role = new WorldRole();
+                    role.Name = "SimpleUser";
+                    role.Description = "Perform simple operations";
+                    await _roleManager.CreateAsync(role);
+                }
+                _userManager.AddToRoleAsync(user,
+                        "Administrator").Wait();
+                _userManager.AddToRoleAsync(user1,
+                        "SimpleUser").Wait();
+
+
+
+
 
 
             }

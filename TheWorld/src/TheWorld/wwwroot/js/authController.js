@@ -33,12 +33,13 @@
             $scope.showReg = true;
         }
        
-        
+
+
 
         $scope.registerUser = function () {
-           
+
             if (ValidateReg($scope.UserInfo)) {
-                
+
                 var rvm = {
                     Username: $scope.UserInfo.Username,
                     Password: $scope.UserInfo.Password,
@@ -46,13 +47,22 @@
                 }
                 $http.post("/register", rvm)
                 .then(function (response) {
-                    
+                    if (response.status == 201) {
+                        $scope.message = "User created succesfully. You need to login"
+                        $scope.UserInfo = {}
+
+                    } else {
+                        $scope.UserInfo.Password = {}
+                        $scope.UserInfo.ConfPassword = {}
+                        $scope.message = response.data;
+                    }
                 })
                 .finally(function () {
-                
                 });
             }
         };
+
+
 
         // check if user input is correct
          var  ValidateReg = function (userInfo)

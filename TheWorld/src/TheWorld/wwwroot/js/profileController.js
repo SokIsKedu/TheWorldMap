@@ -16,8 +16,7 @@
                    pc.user = response.data;
                 })
                 .finally(function () {
-                    pc.isProfilePic = (pc.user.profilePic == null);
-                   
+                    pc.isProfilePic = (pc.user.profilePic != null);   
                 });
 
 

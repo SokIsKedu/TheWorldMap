@@ -57,7 +57,8 @@ font-family:sans-serif, "FontAwesome";
 .headshot {
     max-width: 50px;
     padding: 3px;
-    border: 1px solid #222;
+    background-image:url('C:\Users\trumpe\Source\Repos\TheWorldMap\TheWorld\src\TheWorld\wwwroot\img\avatar-300x300.png');
+
 }
 
 .menu {

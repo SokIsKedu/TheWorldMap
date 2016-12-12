@@ -9,7 +9,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace TheWorld.Models
 {
-    public class WorldContext : IdentityDbContext<WorldUser>   
+    public class WorldContext : IdentityDbContext<WorldUser,WorldRole,string>   
     {
         
         public WorldContext(IConfigurationRoot config,DbContextOptions options)

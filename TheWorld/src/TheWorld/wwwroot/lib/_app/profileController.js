@@ -1,1 +1,1 @@
-!function(){"use strict";function i(i,r,l){var e=this;e.user;var o="/api/profile";e.isProfilePic=!0,i.get(o).then(function(i){e.user=i.data}).finally(function(){e.isProfilePic=null==e.user.profilePic})}angular.module("app-profile").controller("profileController",i)}();
+!function(){"use strict";function i(i,r,l){var e=this;e.user;var o="/api/profile";e.isProfilePic=!0,i.get(o).then(function(i){e.user=i.data}).finally(function(){e.isProfilePic=null!=e.user.profilePic})}angular.module("app-profile").controller("profileController",i)}();

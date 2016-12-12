@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TheWorld.Models;
 using TheWorld.ViewModels;
+using System.Net.Http;
 
 namespace TheWorld.Contollers
 {
@@ -20,11 +21,13 @@ namespace TheWorld.Contollers
     {
         private SignInManager<WorldUser> _signInManager;
         private UserManager<WorldUser> _userManager;
+        private RoleManager<WorldRole> _roleManager;
 
-        public AuthController(SignInManager<WorldUser> signInManager, UserManager<WorldUser> userManager)
+        public AuthController(SignInManager<WorldUser> signInManager, UserManager<WorldUser> userManager, RoleManager<WorldRole> roleManager)
         {
             _signInManager = signInManager;
             _userManager = userManager;
+            _roleManager = roleManager;
             
         }
 
@@ -86,11 +89,10 @@ namespace TheWorld.Contollers
         [Route("/register")]
         public async Task<IActionResult> Register([FromBody]RegisterViewModel rvm)
         {
-            try
+            if (ModelState.IsValid)
             {
-                //if (await _roleManager.RoleExistsAsync("Administrator")) {
-                //    IdentityRole role = new IdentityRole("Administrator");
-                //}
+
+
 
                 var user = new WorldUser()
                 {
@@ -99,17 +101,37 @@ namespace TheWorld.Contollers
                 };
                 user.DateJoined = DateTime.Now;
                 var result = await _userManager.CreateAsync(user, rvm.Password);
-                Debug.WriteLine(result);
-                
+                Console.WriteLine();
+                if (result.Succeeded)
+                {
 
+                    if (!_roleManager.RoleExistsAsync("SimpleUser").Result)
+                    {
+                        WorldRole role = new WorldRole();
+                        role.Name = "SimpleUser";
+                        role.Description = "Perform simple operations";
+                        IdentityResult roleResult = _roleManager.CreateAsync(role).Result;
+                        if (!roleResult.Succeeded)
+                        {
+                            ModelState.AddModelError("",
+                            "Error while creating role!");
+                            return BadRequest("Error while creating role!");
+                        }
+                    }
+                    _userManager.AddToRoleAsync(user,
+                     "SimpleUser").Wait();
+                    
+                    return Created("", "");
+                }
+                else {
+                    return BadRequest(result.ToString());
+                }
             }
-            catch (Exception ex)
+            else
             {
-
-                ViewBag.UserMessage = "Unable to register user. Please try again.  '\n'" + ex.Message;
+                return BadRequest();
             }
-            return Ok();
         }
-
+            
     }
 }

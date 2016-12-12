@@ -46,7 +46,7 @@ namespace TheWorld
 
             services.AddDbContext<WorldContext>();
 
-            services.AddIdentity<WorldUser, IdentityRole>(config =>
+            services.AddIdentity<WorldUser, WorldRole>(config =>
             {
                 config.User.RequireUniqueEmail = true;
                 config.Password.RequiredLength = 8;

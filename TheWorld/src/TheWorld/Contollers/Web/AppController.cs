@@ -44,7 +44,7 @@ namespace TheWorld.Contollers.Web
             return View();
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Administrator")]
         public IActionResult Admin()
         {
             return View();

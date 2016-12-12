@@ -47,6 +47,7 @@ namespace TheWorld.Contollers.Api
         [HttpPost("/api/profile/upload")]
         public async Task<IActionResult> Upload()
         {
+            // TODO sutvarkyti kai paduoda bigsize
             var files = HttpContext.Request.Form.Files;
             var uploads = Path.Combine(_environment.WebRootPath, "img\\profilePic");
             foreach (FormFile file in files)
