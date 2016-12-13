@@ -8,14 +8,14 @@
 
     <div class="panel panel-info">
         <div class="panel-heading">
-            <h3 class="panel-title">{{2+2}}</h3>
+            <h3 class="panel-title">{{vm.gai}}</h3>
         </div>
         <div class="panel-body">
             <div class="row">
                 <div class="col-md-3 col-lg-3 " align="center">
-
-                    <img ng-show="vm.isProfilePic" ng-src="../img/profilePic/pic{{pc.user.id}}.jpg" class="profilePic">
-                    <img ng-show="!pc.isProfilePic" src="../img/avatar-300x300.png" class="profilePic">
+                    {{4*4}}
+                    <img ng-show="vm.isProfilePic" ng-src="../img/profilePic/pic{{vm.user.id}}.jpg" class="profilePic">
+                    <img ng-show="!vm.isProfilePic" src="../img/avatar-300x300.png" class="profilePic">
 
                 </div>
                 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -25,11 +25,11 @@
                         <tbody>
                             <tr>
                                 <td>Name:</td>
-                                <td>{{pc.user.userName}}</td>
+                                <td>{{vm.user.userName}}</td>
                             </tr>
                             <tr>
                                 <td>Date joined</td>
-                                <td>{{pc.user.dateJoined | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                                <td>{{vm.user.dateJoined | date:'yyyy-MM-dd HH:mm:ss'}}</td>
                             </tr>
 
 
@@ -44,7 +44,7 @@
                             </tr>
                             <tr>
                                 <td>Email</td>
-                                <td><a>{{pc.user.email}}</a></td>
+                                <td><a>{{vm.user.email}}</a></td>
                             </tr>
                             <tr>
                                 <td>Phone Number</td>
@@ -80,7 +80,7 @@
         <div class="panel-footer">
             <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
             <span class="pull-right">
-                <a href="#/" data-original-title="Save" data-toggle="tooltip" type="button" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-save"></i></a>
+                <a  ng-href="#/" data-original-title="Save" data-toggle="tooltip" type="button" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-save"></i></a>
                 <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
             </span>
         </div>
