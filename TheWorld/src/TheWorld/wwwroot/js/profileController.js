@@ -4,8 +4,7 @@
     angular.module("app-profile")
     .controller("profileController",profileController);
 
-    function profileController($http,$scope,$timeout)
-    {
+    function profileController($http,$scope,$timeout){
         //pc.isPictureSelected = false;
         var pc = this;
         pc.user;
@@ -18,10 +17,5 @@
                 .finally(function () {
                     pc.isProfilePic = (pc.user.profilePic != null);   
                 });
-
-
-        
-
     }
-
 })();

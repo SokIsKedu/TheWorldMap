@@ -11,7 +11,8 @@ namespace TheWorld.Models
         void RemoveTrip(string name, string username);
         void AddStop(string tripName, Stop newStop, string username);
         void RemoveStop(Stop newStop, string tripName, string username);
-
+        void UpdateUser(WorldUser User);
+        
         Task<bool> SaveChangesAsync();
         IEnumerable<Trip> GetAllTripsWithStops();
         IEnumerable<Trip> GetUserTripsWithStops(string name);

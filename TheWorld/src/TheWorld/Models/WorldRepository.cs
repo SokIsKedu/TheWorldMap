@@ -21,7 +21,17 @@ namespace TheWorld.Models
         }
 
 
+        public void UpdateUser(WorldUser User)
+        {
 
+            var usr = _context.Users.SingleOrDefault(u => u.Id == User.Id);
+            if (usr != null)
+            {
+                User.ProfilePic = User.ProfilePic;
+                _context.SaveChanges();
+            }
+        }
+       
         public void AddStop(string tripName, Stop newStop, string username)
         {
             var trip = GetTripByName(tripName, username);

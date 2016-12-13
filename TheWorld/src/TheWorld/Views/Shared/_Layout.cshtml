@@ -18,15 +18,7 @@
 <body  style="overflow-x:hidden">
 
     <div  id="sidebar">
-@if (User.Identity.IsAuthenticated)
-{
 
-    <img src="@Url.Content("C:\\Users\\trumpe\\Source\\Repos\\TheWorldMap\\TheWorld\\src\\TheWorld\\wwwroot\\img\\profilePic"+ @User.Identity.Name + ".jpg")" class="headshot" />
-    //<img ng-show="pc.isProfilePic" alt="Profile pic" ng-src="../img/profilePic/pic{{pc.user.id}}.jpg" class="img-circle img-responsive">
-    //<img ng-show="!pc.isProfilePic" alt="Alt Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" class="headshot" />
-
-        <span id="username">@User.Identity.Name</span>
-}
         <ul class="nav">
             @if (ViewContext.HttpContext.User.IsInRole("Administrator"))
             {
@@ -75,7 +67,7 @@
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu extended logout">
-                            
+                           
                             <li class="eborder-top">
                                 <a  asp-controller="App" asp-action="Profile"><i class="fa fa-user" aria-hidden="true"></i> Profile//damusti</a>
                             </li>

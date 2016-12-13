@@ -8,7 +8,7 @@
             controllerAs: "pc",
             templateUrl: "/views/profileView.html"
         });
-        $routeProvider.when("/edit",
+        $routeProvider.when("/editProfile",
             {
                 controller: "profileEditorController",
                 controllerAs: "vm",

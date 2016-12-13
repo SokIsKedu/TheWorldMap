@@ -58,9 +58,11 @@ font-family:sans-serif, "FontAwesome";
     max-width: 50px;
     padding: 3px;
     background-image:url('C:\Users\trumpe\Source\Repos\TheWorldMap\TheWorld\src\TheWorld\wwwroot\img\avatar-300x300.png');
-
 }
-
+.profilePic {
+    max-width:130px;
+    max-height:170px;
+}
 .menu {
     font-size: 12px;
 }
@@ -127,5 +129,10 @@ margin-bottom:0px
 }
 #sidebar-login {
 background-color:aliceblue;
+}
+
+.drop-down-menu-title {
+    border-bottom:solid 1px;
+    overflow:hidden;
 }
 
