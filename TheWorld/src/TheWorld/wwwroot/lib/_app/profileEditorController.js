@@ -1,0 +1,1 @@
+!function(){"use strict";function i(i,r,l){var o=this;o.user,o.gai="gaidys";var e="/api/profile";o.isProfilePic=!0,i.get(e).then(function(i){o.user=i.data}).finally(function(){o.isProfilePic=null!=o.user.profilePic})}angular.module("app-profile").controller("profileEditorController",i)}();

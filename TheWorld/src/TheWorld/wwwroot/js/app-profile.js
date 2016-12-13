@@ -11,7 +11,7 @@
         $routeProvider.when("/editProfile",
             {
                 controller: "profileEditorController",
-                controllerAs: "pc",
+                controllerAs: "vm",
                 templateUrl: "/views/profileEditorView.html"
             });
         $routeProvider.otherwise({ redirectTo: "/" });

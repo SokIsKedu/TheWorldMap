@@ -1,87 +1,87 @@
-﻿<div class="col-md-5  toppad  pull-right col-md-offset-3 ">
+﻿    <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
 
-    <br>
+        <br>
 
-</div>
-<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
 
 
-    <div class="panel panel-info">
-        <div class="panel-heading">
-            <h3 class="panel-title">{{vm.gai}}</h3>
-        </div>
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-md-3 col-lg-3 " align="center">
-                    {{4*4}}
-                    <img ng-show="vm.isProfilePic" ng-src="../img/profilePic/pic{{vm.user.id}}.jpg" class="profilePic">
-                    <img ng-show="!vm.isProfilePic" src="../img/avatar-300x300.png" class="profilePic">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{vm.user.userName}}</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-3 col-lg-3 " align="center">
+                        <img ng-show="vm.isProfilePic" ng-src="../img/profilePic/pic{{vm.user.id}}.jpg" class="profilePic">
+                        <img ng-show="!vm.isProfilePic" src="../img/avatar-300x300.png" class="profilePic">
 
+                    </div>
+
+
+                    <div class="col-md-9 col-lg-9">
+                        <table class="table table-user-information">
+                            <tbody>
+                                <tr>
+                                    <td>Name:</td>
+                                    <td><input type="text" name="gender" value="{{vm.user.userName}}" ng-model="vm.user.userName"></td>
+                                </tr>
+                                <tr>
+                                    <td>Date joined</td>
+                                    <td>{{vm.user.dateJoined | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                                </tr>
+
+
+
+                                <tr>
+                                    <td>Gender</td>
+                                    <td><input type="text" name="gender" value="{{vm.user.gender}}" ng-model="vm.user.gender"></td>
+                                </tr>
+                                <tr>
+                                    <td>Home Address</td>
+                                    <td><input type="text" name="gender" value="{{vm.user.homeAddress}}" ng-model="vm.user.homeAddress"></td>
+
+                                </tr>
+                                <tr>
+                                    <td>Email</td>
+                                    <td><input type="text" name="gender" value="{{vm.user.email}}" ng-model="vm.user.email"></td>
+                                </tr>
+                                <tr>
+                                    <td>Phone Number</td>
+                                    
+                                    <td><input type="text" name="gender" value="{{vm.user.phoneNumber}}" ng-model="vm.user.phoneNumber"></td>
+                                    
+                                </tr>
+
+
+
+
+                            </tbody>
+                        </table>
+
+
+                    </div>
                 </div>
-                aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-
-                <div class="col-md-9 col-lg-9">
-                    <table class="table table-user-information">
-                        <tbody>
-                            <tr>
-                                <td>Name:</td>
-                                <td>{{vm.user.userName}}</td>
-                            </tr>
-                            <tr>
-                                <td>Date joined</td>
-                                <td>{{vm.user.dateJoined | date:'yyyy-MM-dd HH:mm:ss'}}</td>
-                            </tr>
-
-
-
-                            <tr>
-                                <td>Gender</td>
-                                <td>Dummy Data</td>
-                            </tr>
-                            <tr>
-                                <td>Home Address</td>
-                                <td>Dummy Data</td>
-                            </tr>
-                            <tr>
-                                <td>Email</td>
-                                <td><a>{{vm.user.email}}</a></td>
-                            </tr>
-                            <tr>
-                                <td>Phone Number</td>
-                                <td>
-                                    Dummy Data<br><br>Dummy Data
-                                </td>
-                            </tr>
 
 
 
 
-                        </tbody>
-                    </table>
+                <form method="post" action="/api/profile/upload" enctype="multipart/form-data">
+                    <input type="file" name="files" accept="image/*" />
+                    <input type="submit" value="Upload" />
+                </form>
 
 
-                </div>
+
+            </div>
+            <div class="panel-footer">
+                <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
+                <span class="pull-right">
+                    <a ng-href="#/" data-original-title="Save" data-toggle="tooltip" type="button" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-save"></i></a>
+                    <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+                </span>
             </div>
 
-
-
-
-            <form method="post" action="/api/profile/upload" enctype="multipart/form-data">
-                <input type="file" name="files" accept="image/*" />
-                <input type="submit" value="Upload" />
-            </form>
-            
-
-
-        </div>
-        <div class="panel-footer">
-            <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
-            <span class="pull-right">
-                <a  ng-href="#/" data-original-title="Save" data-toggle="tooltip" type="button" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-save"></i></a>
-                <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
-            </span>
         </div>
 
     </div>
-
-</div>
