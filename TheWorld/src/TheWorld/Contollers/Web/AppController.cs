@@ -81,6 +81,8 @@ namespace TheWorld.Contollers.Web
         [AllowAnonymous]
         public IActionResult About()
         {
+            Console.WriteLine("==============================================================================");
+            Console.WriteLine(DateTime.Now);
             return View();
         }
     }

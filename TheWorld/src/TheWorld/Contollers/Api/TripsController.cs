@@ -60,6 +60,7 @@ namespace TheWorld.Contollers.Api
         [HttpDelete("/api/trips/deltrip/{tripName}")]
         public async Task<IActionResult> Delete(string tripName)
         {
+           
             try
             {
                 

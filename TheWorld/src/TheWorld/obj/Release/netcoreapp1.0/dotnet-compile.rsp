@@ -226,6 +226,7 @@
 C:\Users\trumpe\Source\Repos\TheWorldMap\TheWorld\src\TheWorld\Program.cs
 C:\Users\trumpe\Source\Repos\TheWorldMap\TheWorld\src\TheWorld\Startup.cs
 C:\Users\trumpe\Source\Repos\TheWorldMap\TheWorld\src\TheWorld\Contollers\AuthController.cs
+C:\Users\trumpe\Source\Repos\TheWorldMap\TheWorld\src\TheWorld\Contollers\Api\AdminController.cs
 C:\Users\trumpe\Source\Repos\TheWorldMap\TheWorld\src\TheWorld\Contollers\Api\ProfileController.cs
 C:\Users\trumpe\Source\Repos\TheWorldMap\TheWorld\src\TheWorld\Contollers\Api\StopsController.cs
 C:\Users\trumpe\Source\Repos\TheWorldMap\TheWorld\src\TheWorld\Contollers\Api\TripsController.cs
@@ -242,6 +243,10 @@ C:\Users\trumpe\Source\Repos\TheWorldMap\TheWorld\src\TheWorld\Migrations\201609
 C:\Users\trumpe\Source\Repos\TheWorldMap\TheWorld\src\TheWorld\Migrations\20160930073552_profilePic.Designer.cs
 C:\Users\trumpe\Source\Repos\TheWorldMap\TheWorld\src\TheWorld\Migrations\20161212115342_RolesAdded.cs
 C:\Users\trumpe\Source\Repos\TheWorldMap\TheWorld\src\TheWorld\Migrations\20161212115342_RolesAdded.Designer.cs
+C:\Users\trumpe\Source\Repos\TheWorldMap\TheWorld\src\TheWorld\Migrations\20161214102842_totalKM.cs
+C:\Users\trumpe\Source\Repos\TheWorldMap\TheWorld\src\TheWorld\Migrations\20161214102842_totalKM.Designer.cs
+C:\Users\trumpe\Source\Repos\TheWorldMap\TheWorld\src\TheWorld\Migrations\20161215195035_UserRole.cs
+C:\Users\trumpe\Source\Repos\TheWorldMap\TheWorld\src\TheWorld\Migrations\20161215195035_UserRole.Designer.cs
 C:\Users\trumpe\Source\Repos\TheWorldMap\TheWorld\src\TheWorld\Migrations\WorldContextModelSnapshot.cs
 C:\Users\trumpe\Source\Repos\TheWorldMap\TheWorld\src\TheWorld\Models\IWorldRepository.cs
 C:\Users\trumpe\Source\Repos\TheWorldMap\TheWorld\src\TheWorld\Models\Stop.cs

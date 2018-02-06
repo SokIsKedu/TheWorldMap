@@ -9,12 +9,16 @@
         pc.user;
         var apiUrl = "/api/profile";
         pc.isProfilePic = true;
+        
         $http.get(apiUrl)
                 .then(function (response) {
-                   pc.user = response.data;
+                    window.alert(response.data);
+
+                    pc.user = response.data;
+                    window.alert(pc.user);
                 })
                 .finally(function () {
-                    pc.isProfilePic = (pc.user.profilePic != null);   
+                    pc.isProfilePic = pc.user.profilePic !== null;   
                 });
     }
 })();

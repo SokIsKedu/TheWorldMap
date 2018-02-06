@@ -30,12 +30,16 @@ namespace TheWorld.Models
                 var user = new WorldUser()
                 {
                     UserName = "Erlandas",
-                    Email = "erlandastrumpickas@gmail.com"
+                    Email = "erlandastrumpickas@gmail.com",
+                    DateJoined = DateTime.Now,
+                    Role = "Administrator"
                 };
                 var user1 = new WorldUser()
                 {
                     UserName = "Erlandas123",
-                    Email = "et88568@gmail.com"
+                    Email = "et88568@gmail.com",
+                    DateJoined = DateTime.Now,
+                    Role = "SimpleUser"
                 };
                 await _userManager.CreateAsync(user, "P@ssw0rd!");
                 await _userManager.CreateAsync(user1, "P@ssw0rd!");
@@ -60,11 +64,6 @@ namespace TheWorld.Models
                 _userManager.AddToRoleAsync(user1,
                         "SimpleUser").Wait();
 
-
-
-
-
-
             }
             if (!_context.Trips.Any())
             {
@@ -77,12 +76,13 @@ namespace TheWorld.Models
                     Stops = new List<Stop>()
                     {
                         new Stop() {  Name = "Atlanta, GA", Arrival = new DateTime(2014, 6, 4), Latitude = 33.748995, Longitude = -84.387982, Order = 0 },
-						new Stop() {  Name = "New York, NY", Arrival = new DateTime(2014, 6, 9), Latitude = 40.712784, Longitude = -74.005941, Order = 1 },
-						new Stop() {  Name = "Boston, MA", Arrival = new DateTime(2014, 7, 1), Latitude = 42.360082, Longitude = -71.058880, Order = 2 },
-						new Stop() {  Name = "Chicago, IL", Arrival = new DateTime(2014, 7, 10), Latitude = 41.878114, Longitude = -87.629798, Order = 3 },
-						new Stop() {  Name = "Seattle, WA", Arrival = new DateTime(2014, 8, 13), Latitude = 47.606209, Longitude = -122.332071, Order = 4 },
-						new Stop() {  Name = "Atlanta, GA", Arrival = new DateTime(2014, 8, 23), Latitude = 33.748995, Longitude = -84.387982, Order = 5 },
-                    }
+                        new Stop() {  Name = "New York, NY", Arrival = new DateTime(2014, 6, 9), Latitude = 40.712784, Longitude = -74.005941, Order = 1 },
+                        new Stop() {  Name = "Boston, MA", Arrival = new DateTime(2014, 7, 1), Latitude = 42.360082, Longitude = -71.058880, Order = 2 },
+                        new Stop() {  Name = "Chicago, IL", Arrival = new DateTime(2014, 7, 10), Latitude = 41.878114, Longitude = -87.629798, Order = 3 },
+                        new Stop() {  Name = "Seattle, WA", Arrival = new DateTime(2014, 8, 13), Latitude = 47.606209, Longitude = -122.332071, Order = 4 },
+                        new Stop() {  Name = "Atlanta, GA", Arrival = new DateTime(2014, 8, 23), Latitude = 33.748995, Longitude = -84.387982, Order = 5 },
+                    },
+                    TotalKM = 0
                 };
                 _context.Trips.Add(usTrip);
                 _context.Stops.AddRange(usTrip.Stops);
@@ -151,7 +151,8 @@ namespace TheWorld.Models
 						new Stop() { Order = 53, Latitude =  3.139003, Longitude =  101.686855, Name = "Kuala Lumpor, Malaysia", Arrival = DateTime.Parse("May 7, 2015") },
 						new Stop() { Order = 54, Latitude =  13.727896, Longitude =  100.524123, Name = "Bangkok, Thailand", Arrival = DateTime.Parse("May 24, 2015") },
 						new Stop() { Order = 55, Latitude =  33.748995, Longitude =  -84.387982, Name = "Atlanta, Georgia", Arrival = DateTime.Parse("Jun 17, 2015") },
-                    }
+                    },
+                    TotalKM = 0
                 };
                 _context.Trips.Add(worldTrip);
                 _context.Stops.AddRange(worldTrip.Stops);

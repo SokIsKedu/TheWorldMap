@@ -12,7 +12,7 @@ namespace TheWorld.Models
         public string Name { get; set; }
         public DateTime DateCreated { get; set; }
         public string UserName { get; set; }
-
+        public double TotalKM { get; set; }
         public ICollection<Stop> Stops { get; set; }
     }
 }

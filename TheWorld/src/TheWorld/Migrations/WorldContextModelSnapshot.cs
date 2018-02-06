@@ -135,6 +135,8 @@ namespace TheWorld.Migrations
 
                     b.Property<string>("Name");
 
+                    b.Property<double>("TotalKM");
+
                     b.Property<string>("UserName");
 
                     b.HasKey("Id");
@@ -204,6 +206,8 @@ namespace TheWorld.Migrations
                     b.Property<bool>("PhoneNumberConfirmed");
 
                     b.Property<string>("ProfilePic");
+
+                    b.Property<string>("Role");
 
                     b.Property<string>("SecurityStamp");
 

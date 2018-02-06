@@ -7,7 +7,6 @@
         
         var vm = this;
         vm.user;
-        vm.gai = "gaidys";
         var apiUrl = "/api/profile";
         vm.isProfilePic = true;
         $http.get(apiUrl)
@@ -15,7 +14,17 @@
                     vm.user = response.data;
                 })
                 .finally(function () {
-                    vm.isProfilePic = (vm.user.profilePic != null);
+                    vm.isProfilePic = vm.user.profilePic !== null;
                 });
+
+        $scope.saveUser = function () {
+            $http.post(apiUrl, vm.user)
+            .then(function (response) {
+            })
+            .finally(function (response) {
+                redirectTo: '/'
+            });
+        };
     }
+
 })();

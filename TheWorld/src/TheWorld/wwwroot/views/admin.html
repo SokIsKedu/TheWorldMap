@@ -1,0 +1,64 @@
+﻿<div class="col-md-6 col-md-offset-3" ng-controller="adminPanelController">
+    <div class="text-danger" ng-show="pc.errorMessage" ng-bind="pc.errorMessage"></div>
+    <wait-cursor display-when="vm.isBusy"></wait-cursor>
+    <table class="table table-responsive table-striped">
+        <thead>
+            <tr>
+                <th>
+                    <button class="btn btn-block btn-xs" ng-click="pc.sortBy('userName')">UserName <span class="sortorder" ng-show="pc.propertyName === 'name'" ng-class="{reverse: pc.reverse}"></span></button>
+                </th>
+                <th>
+                    <button class="btn btn-block btn-xs" ng-click="pc.sortBy('role')">Role <span class="sortorder" ng-show="pc.propertyName === 'order'" ng-class="{reverse: pc.reverse}"></span></button>
+                </th>
+                <th>
+                    <button class="btn btn-block btn-xs" ng-click="pc.sortBy('email')">Email <span class="sortorder" ng-show="pc.propertyName === 'arrival'" ng-class="{reverse: pc.reverse}"></span></button>
+                </th>
+                <th>
+                    <button class="btn btn-block btn-xs" ng-click="pc.sortBy('dateJoined')">Date Joined <span class="sortorder" ng-show="pc.propertyName === 'order'" ng-class="{reverse: pc.reverse}"></span></button>
+                </th>
+                <th>
+                    <button class="btn btn-block btn-xs" ng-click="pc.sortBy('gender')">Gender <span class="sortorder" ng-show="pc.propertyName === 'order'" ng-class="{reverse: pc.reverse}"></span></button>
+                </th>
+                
+            </tr>
+        </thead>
+        <tr ng-repeat="user in pc.users | orderBy:pc.propertyName:pc.reverse">
+            <td>{{user.userName}}</td>
+            <td>{{user.role}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.dateJoined |  date:'yyyy-MM-dd HH:mm:ss'}}</td>
+            <td>{{user.gender}}</td>
+            <td>
+                <a ng-href="#/editProfile/{{user.userName}}" class="btn btn-sm btn-primary">Manage</a>
+                <button type="button" class="btn btn-sm btn-warning" ng-click="pc.ask(user)">Remove</button>
+            </td>
+
+        </tr>
+    </table>
+</div>
+
+<div class="container" ng-controller="yesNoModalController">
+
+
+    <!-- The actual modal template, just a bit o bootstrap -->
+    <script type="text/ng-template" id="modal.html">
+        <div class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" ng-click="close('Cancel')" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Are you sure?</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>You will permanently delete this user...</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" ng-click="close('No')" class="btn btn-default" data-dismiss="modal">No</button>
+                        <button type="button" ng-click="close('Yes')" class="btn btn-primary" data-dismiss="modal">Yes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+</div>

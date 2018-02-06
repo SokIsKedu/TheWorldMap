@@ -53,20 +53,35 @@ namespace TheWorld.Contollers.Api
         {
             try
             {
-                // if (ModelState.IsValid)
-                // {
-                var newStop = Mapper.Map<Stop>(stop); 
+                var newStop = Mapper.Map<Stop>(stop);
+                Console.WriteLine(newStop.Longitude);
                 _repository.RemoveStop(newStop, tripName, User.Identity.Name);
                     if (await _repository.SaveChangesAsync())
                     {
-                        return Ok();
-                    }
-              //  }
+                    //try
+                    //{
+
+                    //    _repository.CalculateTrip(tripName, User.Identity.Name);
+                    //    if (await _repository.SaveChangesAsync())
+                    //    {
+                    //        return Ok();
+                    //    }
+                    //}
+                    //catch (Exception ex)
+                    //{
+                    //    Console.WriteLine(ex.Message);
+                    //    _logger.LogError($"Failed to Calculate");
+                    //}
+                    return Ok();
+                }
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 _logger.LogError($"Failed to remove stop: {0}", ex);
             }
+
+            
             return BadRequest("Failed to remove stop");
 
         }
@@ -98,7 +113,21 @@ namespace TheWorld.Contollers.Api
                     _repository.AddStop(tripName, newStop, User.Identity.Name);
                     if (await _repository.SaveChangesAsync())
                     {
+                        //try
+                        //{
+                        //    _repository.CalculateTrip(tripName, User.Identity.Name);
+                        //    if (await _repository.SaveChangesAsync())
+                        //    {
+                        //        return Created($"/api/trips/{tripName}/stops/{newStop.Name}", Mapper.Map<StopViewModel>(newStop));
+                        //    }
+                        //}
+                        //catch (Exception ex)
+                        //{
+                        //    Console.WriteLine(ex.Message);
+                        //    _logger.LogError($"Failed to Calculate");
+                        //}
                         return Created($"/api/trips/{tripName}/stops/{newStop.Name}", Mapper.Map<StopViewModel>(newStop));
+
                     }
                 }
             }

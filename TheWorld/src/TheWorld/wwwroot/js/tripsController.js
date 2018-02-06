@@ -10,7 +10,7 @@
         var vm = this;
         vm.trips = [];
         vm.newTrip = {};
-        vm.name = "lopas";
+        
         vm.errorMessage = "";
         vm.isBusy = true;
         var apiUrl ="/api/trips";
@@ -19,14 +19,14 @@
 
         //Rusiuoti
         vm.sortBy = function (propertyName) {
-            vm.reverse = (vm.propertyName === propertyName) ? !vm.reverse : false;
+            vm.reverse = vm.propertyName === propertyName ? !vm.reverse : false;
             vm.propertyName = propertyName;
 
         };
 
         $http.get(apiUrl)
             .then(function (response) {
-                angular.copy(response.data, vm.trips)
+                angular.copy(response.data, vm.trips);
             }, function (error) {
                 vm.errorMessage = "Failed to load data: " + error;
             }).finally(function () {
@@ -35,7 +35,7 @@
 
         vm.addTrip = function () {
             vm.errorMessage = "";
-           
+
             if (contains(vm.newTrip)) {
                 vm.errorMessage = "Name already exists";
             } else {
@@ -48,16 +48,16 @@
                     vm.errorMessage = "Failed to save new trip";
                 }).finally(function () {
                     vm.isBusy = false;
-                })
+                });
             }
-        }
+        };
         
         vm.removeTrip = function (trip) {
             alert("eina");
             vm.errorMessage = "";
             vm.isBusy = true;
             var index = vm.trips.indexOf(trip);
-            $http.delete(apiUrl+"/deltrip/"+trip.name)
+            $http.delete(apiUrl + "/deltrip/" + trip.name)
                 // working delete request
             .then(function (response) {
                 vm.trips.splice(index, 1);
@@ -69,20 +69,18 @@
             }).finally(function () {
                 vm.isBusy = false;
             });
-        }
+        };
 
-       var  contains = function (trip) {
+        var contains = function (trip) {
             var contains = false;
-            for (var i = 0; i < vm.trips.length; i++)
-            {
-                if (trip.name == vm.trips[i].name)
-                {
+            for (var i = 0; i < vm.trips.length; i++) {
+                if (trip.name === vm.trips[i].name) {
                     alert(!contains);
                     return !contains;
                 }
             }
             return contains;
-        }
+        };
     }
 })();
 

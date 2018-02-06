@@ -17,6 +17,7 @@ using System.IO;
 using Microsoft.AspNetCore.Http;
 using System.Diagnostics;
 using Microsoft.Net.Http.Headers;
+using Newtonsoft.Json.Linq;
 
 namespace TheWorld.Contollers.Api
 {
@@ -36,13 +37,19 @@ namespace TheWorld.Contollers.Api
         [HttpGet("")]
         public async Task<IActionResult> Get()
         {
-
+            // Something wrong with getting the user.
             var user = await GetCurrentUserAsync();
             var userId = user?.Id;
             return Json(user);
         }
 
-
+        [HttpPost("")]
+        public IActionResult Post([FromBody]JToken usr)
+        {
+            WorldUser pim = usr.ToObject<WorldUser>();
+            _repository.UpdateUser(pim);
+            return Ok();
+        }
 
         [HttpPost("/api/profile/upload")]
         public async Task<IActionResult> Upload(ICollection<IFormFile> files)
@@ -73,66 +80,13 @@ namespace TheWorld.Contollers.Api
                     }
                 }
             }
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            //// TODO sutvarkyti kai paduoda bigsize
-            //var files = HttpContext.Request.Form.Files;
-            //var uploads = Path.Combine(_environment.WebRootPath, "img\\profilePic");
-            //foreach (FormFile file in files)
-            //{
-            //    Console.WriteLine(file.ContentType);
-            //    if (file.Length > 0 && file.ContentType.StartsWith("image") && file.Length < 16384)
-            //    {
-
-
-            //        var usr = await GetCurrentUserAsync();
-            //        var userId = usr?.Id;
-            //        var fileName = "pic" + usr?.Id + ".jpg";
-            //        try
-            //        {
-            //            using (var fileStream = new FileStream(Path.Combine(uploads, fileName), FileMode.Create))
-            //            {
-            //                await file.CopyToAsync(fileStream);
-            //                Debug.WriteLine("eina");
-            //            }
-            //        }
-            //        catch (Exception ex)
-            //        {
-            //            Debug.WriteLine(ex.Data);
-            //        }
-            //    }
-
-            //}
             return Redirect("/App/Profile");
         }
 
-
-
-
-
-        
-
-
-
-
-        private Task<WorldUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
+        private Task<WorldUser> GetCurrentUserAsync()
+        {
+            var a = _userManager.GetUserAsync(HttpContext.User);
+            return a;
+        }
     }
 }

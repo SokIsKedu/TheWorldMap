@@ -22,7 +22,7 @@
         vm.show = true;
         vm.newStop = {};
         var apiUrl = "/api/trips/" + vm.tripName + "/stops";
-        var apiUrlDeleteStop = apiUrl + "/delstop"
+        var apiUrlDeleteStop = apiUrl + "/delstop";
         
         vm.reverse = false;
         vm.propertyName = "name";
@@ -30,7 +30,7 @@
 
         //Rusiuoti
         vm.sortBy = function (propertyName) {
-            vm.reverse = (vm.propertyName === propertyName) ? !vm.reverse : false;
+            vm.reverse = vm.propertyName === propertyName ? !vm.reverse : false;
             vm.propertyName = propertyName;
 
         };
@@ -78,7 +78,7 @@
             .then(function (response) {               
                 vm.stops.splice(index, 1);
                 _showMap(vm.stops);
-                if (vm.stops.length == 0) {
+                if (vm.stops.length === 0) {
                     vm.show = false;
                 }
 
@@ -106,7 +106,7 @@
             });
           
             var currStop;
-            if (stops.length == 0) {
+            if (stops.length === 0) {
                 currStop = 0;
             } else {
                 currStop = stops.length - 1;

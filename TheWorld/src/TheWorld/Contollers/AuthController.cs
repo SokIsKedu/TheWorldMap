@@ -38,6 +38,7 @@ namespace TheWorld.Contollers
              if (User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Trips", "App");
+                
             }
             if (!ModelState.IsValid)
             {
@@ -97,8 +98,9 @@ namespace TheWorld.Contollers
                 var user = new WorldUser()
                 {
                     UserName = rvm.Username,
-                    Email = rvm.Email
-                };
+                    Email = rvm.Email,
+                    Role = "SimpleUser"
+            };
                 user.DateJoined = DateTime.Now;
                 var result = await _userManager.CreateAsync(user, rvm.Password);
                 Console.WriteLine();
@@ -109,6 +111,7 @@ namespace TheWorld.Contollers
                     {
                         WorldRole role = new WorldRole();
                         role.Name = "SimpleUser";
+                        
                         role.Description = "Perform simple operations";
                         IdentityResult roleResult = _roleManager.CreateAsync(role).Result;
                         if (!roleResult.Succeeded)

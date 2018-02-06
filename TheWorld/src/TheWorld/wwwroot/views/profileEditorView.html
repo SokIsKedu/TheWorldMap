@@ -35,8 +35,16 @@
 
                                 <tr>
                                     <td>Gender</td>
-                                    <td><input type="text" name="gender" value="{{vm.user.gender}}" ng-model="vm.user.gender"></td>
+                                    <td>
+                                        <select ng-model="vm.user.gender">
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                        </select>
+                                    </td>
                                 </tr>
+                                
+
+
                                 <tr>
                                     <td>Home Address</td>
                                     <td><input type="text" name="gender" value="{{vm.user.homeAddress}}" ng-model="vm.user.homeAddress"></td>
@@ -57,7 +65,9 @@
 
 
                             </tbody>
+                            
                         </table>
+                        
 
 
                     </div>
@@ -75,10 +85,10 @@
 
             </div>
             <div class="panel-footer">
-                <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
+                <a data-original-title="Broadcast Message" data-toggle="tooltip"  class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
                 <span class="pull-right">
-                    <a ng-href="#/" data-original-title="Save" data-toggle="tooltip" type="button" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-save"></i></a>
-                    <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+                    <a ng-click="saveUser()" ng-href="#/" data-original-title="Save" data-toggle="tooltip" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-save"></i></a>
+                    <a data-original-title="Remove this user" data-toggle="tooltip"  class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
                 </span>
             </div>
 

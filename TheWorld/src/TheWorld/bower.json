@@ -10,6 +10,10 @@
     "font-awesome": "~4.4.0",
     "bootswatch": "3.3.6",
     "travelmap": "~1.0.2",
-    "angularjs-datepicker": "^2.1.6"
+    "angularjs-datepicker": "^2.1.6",
+    "angular-modal-service": "^0.10.1"
+  },
+  "resolutions": {
+    "angular": "~1.6.0"
   }
 }
